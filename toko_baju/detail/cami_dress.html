@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detail Produk</title>
+    <!-- Tautan ke CSS Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Gaya CSS tambahan -->
+    <style>
+        /* Gaya untuk kontainer slider */
+        .swiper-container {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        /* Gaya untuk gambar produk */
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <?php
+        // Koneksi ke database
+        $servername = "localhost"; // Ganti dengan nama server Anda
+        $username = "username"; // Ganti dengan nama pengguna database Anda
+        $password = "password"; // Ganti dengan kata sandi database Anda
+        $dbname = "nama_database"; // Ganti dengan nama database Anda
+
+        // Membuat koneksi ke database
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        // Memeriksa koneksi
+        if (!$conn) {
+            die("Koneksi gagal: " . mysqli_connect_error());
+        }
+
+        // Query untuk mengambil data produk
+        $sql = "SELECT * FROM produk";
+        $result = mysqli_query($conn, $sql);
+
+        // Menampilkan data produk sebagai slider
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="swiper-slide">';
+            echo '<img src="' . $row['gambar'] . '" alt="' . $row['nama_produk'] . '">';
+            echo '</div>';
+        }
+
+        // Menutup koneksi database
+        mysqli_close($conn);
+        ?>
+    </div>
+    <!-- Tombol navigasi slider -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<!-- Tautan ke library Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Script JavaScript untuk inisialisasi Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
+</body>
+</html>
