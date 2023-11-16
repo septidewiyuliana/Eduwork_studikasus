@@ -42,7 +42,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
     <!-- header section strats -->
     <header class="header_section">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <span>
             BeautyWear
           </span>
@@ -62,17 +62,17 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="why.html">
+              <a class="nav-link" href="why.php">
                 Why Us
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="testimonial.html">
+              <a class="nav-link" href="testimonial.php">
                 Testimonial
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
           </ul>
           <div class="user_option">
@@ -408,7 +408,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
         </div>
       </div>
       <div class="btn-box">
-        <a href="shop.html">
+        <a href="shop.php">
           View All Products
         </a>
       </div>

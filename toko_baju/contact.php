@@ -34,7 +34,7 @@
     <!-- header section strats -->
     <header class="header_section">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <span>
             Beauty Wear
           </span>
@@ -59,12 +59,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="testimonial.html">
+              <a class="nav-link" href="testimonial.php">
                 Testimonial
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
           </ul>
           <div class="user_option">
@@ -215,8 +215,6 @@
       <div class="container">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a>
-        </p>
       </div>
     </footer>
     <!-- footer section -->

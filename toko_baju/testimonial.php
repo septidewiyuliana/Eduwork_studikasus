@@ -14,7 +14,7 @@
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
   <title>
-    Giftos
+    beauty Wear
   </title>
 
   <!-- slider stylesheet -->
@@ -34,9 +34,9 @@
     <!-- header section strats -->
     <header class="header_section">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <span>
-            Giftos
+            Beauty Wear
           </span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,25 +46,25 @@
         <div class="collapse navbar-collapse innerpage_navbar" id="navbarSupportedContent">
           <ul class="navbar-nav  ">
             <li class="nav-item ">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="shop.html">
+              <a class="nav-link" href="shop.php">
                 Shop
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="why.html">
+              <a class="nav-link" href="why.php">
                 Why Us
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="testimonial.html">
+              <a class="nav-link" href="testimonial.php">
                 Testimonial
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact Us</a>
+              <a class="nav-link" href="contact.php">Contact Us</a>
             </li>
           </ul>
           <div class="user_option">
@@ -251,7 +251,6 @@
       <div class="container">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a>
         </p>
       </div>
     </footer>
