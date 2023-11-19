@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  
     <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -52,19 +53,70 @@
       margin-top: 20px;
     }
   </style>
-  
+
 </head>
 
 <body>
+<?php
+// Mendapatkan ID produk dari URL
+if(isset($_GET['id'])) {
+    $product_id = $_GET['id'];
+
+    // Query untuk mengambil detail produk berdasarkan ID
+    $sql = "SELECT * FROM detail_produk WHERE id = $product_id";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Output data dari setiap baris
+        while($row = $result->fetch_assoc()) {
+            $product_name = $row['product_name'];
+            $description = $row['description'];
+            $price = $row['price'];
+            // ... (Dapatkan data lainnya sesuai kebutuhan)
+
+            // Tampilkan informasi produk dalam HTML
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+    <!-- Your CSS styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="product-details">
+            <h2><?php echo $product_name; ?></h2>
+            <p>Description: <?php echo $description; ?></p>
+            <p>Price: <?php echo $price; ?></p>
+            <!-- Tambahkan informasi produk lainnya sesuai kebutuhan -->
+        </div>
+    </div>
+</body>
+</html>
+<?php
+        }
+    } else {
+        echo "Produk tidak ditemukan.";
+    }
+
+    // Menutup koneksi database
+    $conn->close();
+} else {
+    echo "ID produk tidak ditemukan.";
+}
+?>
+
   <div class="container mt-5">
     <h1 class="text-center mb-4">Product Details</h1>
 
     <div class="product-slider">
       <div>
-        <img src="../image/1.png" alt="Image 1">
+        <img src="../images/1.png" alt="Image 1">
       </div>
       <div>
-        <img src="../image/2.png" alt="Image 2">
+        <img src="../images/2.png" alt="Image 2">
       </div>
       <!-- Add more images here -->
     </div>

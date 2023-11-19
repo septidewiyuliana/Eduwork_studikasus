@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2023 at 04:38 PM
+-- Generation Time: Nov 19, 2023 at 11:07 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,195 +24,129 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang`
+-- Table structure for table `kategori`
 --
 
-CREATE TABLE `barang` (
+CREATE TABLE `kategori` (
+  `id_kategori` int(11) NOT NULL,
+  `nama_kategori` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(1, 'Dress'),
+(2, 'Tops'),
+(3, 'Bottoms');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk`
+--
+
+CREATE TABLE `produk` (
   `id_barang` int(11) NOT NULL,
-  `nama_barang` varchar(50) DEFAULT NULL,
+  `nama_produk` varchar(50) DEFAULT NULL,
   `harga` decimal(10,3) DEFAULT NULL,
   `stok` int(11) DEFAULT NULL,
-  `id_supplier` int(11) DEFAULT NULL
+  `gambar` varchar(255) DEFAULT NULL,
+  `keterangan` text DEFAULT NULL,
+  `id_kategori` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `barang`
+-- Dumping data for table `produk`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `id_supplier`) VALUES
-(104, 'Dress Floral', 150000.000, 30, NULL),
-(105, 'Blouse Striped', 80000.000, 25, NULL),
-(106, 'Jeans Skinny', 120000.000, 20, NULL),
-(107, 'Skirt A-line', 90000.000, 15, NULL),
-(108, 'T-shirt V-neck', 40000.000, 40, NULL),
-(109, 'Cardigan Knit', 750000.000, 18, NULL);
+INSERT INTO `produk` (`id_barang`, `nama_produk`, `harga`, `stok`, `gambar`, `keterangan`, `id_kategori`) VALUES
+(1, 'Cardigan', 256.000, 15, '17.png', 'This new item', 1),
+(104, ' Ruffle Cami Dress', 250.000, 25, '3.png', '', 1),
+(106, 'Blouse Stripped', 120.000, 27, '13.png', '', 2),
+(107, '  V line', 900.000, 18, '15.png', '', 2),
+(108, 'Bear Dress & Mock Neck Top Set', 400.000, 40, '7.png', NULL, 1),
+(109, ' Vintage High Waist Pleated Skirt', 750.000, 18, '16.png', NULL, 3),
+(112, 'Bluey Dress', 567.000, 61, '2.png', 'Pretty Dress', 2),
+(113, 'V Blouse', 97.000, 16, '13.png', 'This New for summer', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `pembayaran` (
-  `id_pembayaran` int(11) NOT NULL,
-  `tgl_bayar` date DEFAULT NULL,
-  `total_bayar` decimal(10,3) DEFAULT NULL,
-  `id_transaksi` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `pembayaran`
---
-
-INSERT INTO `pembayaran` (`id_pembayaran`, `tgl_bayar`, `total_bayar`, `id_transaksi`) VALUES
-(301, '2023-11-19', 120.000, 204),
-(302, '2023-11-20', 70.000, 205),
-(303, '2023-11-21', 95.000, 206),
-(304, '2023-11-22', 150.000, 207),
-(305, '2023-11-23', 80.000, 208),
-(306, '2023-11-24', 120.000, 209);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pembeli`
---
-
-CREATE TABLE `pembeli` (
-  `id_pembeli` int(11) NOT NULL,
-  `nama_pembeli` varchar(50) DEFAULT NULL,
+CREATE TABLE `users` (
+  `id_pengguna` int(11) NOT NULL,
+  `nama_pengguna` varchar(255) NOT NULL,
   `no_telp` char(13) DEFAULT NULL,
-  `alamat` text DEFAULT NULL
+  `alamat` text DEFAULT NULL,
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pembeli`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `pembeli` (`id_pembeli`, `nama_pembeli`, `no_telp`, `alamat`) VALUES
-(1, 'Alice', '081234567893', 'Jl. CAntik No. 1'),
-(2, 'Eva', '081234567894', 'Jl. Pahlawan No. 2'),
-(3, 'Sophia', '081234567895', 'Semarang'),
-(4, 'Olivia', '081234567896', 'Jl. Wanita No. 4'),
-(5, 'Emma', '081234567897', 'Jl. Wanita No. 5'),
-(6, 'Isabella', '081234567898', 'Jl. Wanita No. 6');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `supplier`
---
-
-CREATE TABLE `supplier` (
-  `id_supplier` int(11) NOT NULL,
-  `nama_supplier` varchar(20) NOT NULL,
-  `no_telp` char(13) DEFAULT NULL,
-  `alamat` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi`
---
-
-CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
-  `id_pembeli` int(11) DEFAULT NULL,
-  `id_barang` int(11) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL,
-  `keterangan` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `transaksi`
---
-
-INSERT INTO `transaksi` (`id_transaksi`, `id_pembeli`, `id_barang`, `tanggal`, `keterangan`) VALUES
-(204, 1, 104, '2023-11-13', 'Pembelian Dress Floral oleh Alice'),
-(205, 2, 105, '2023-11-14', 'Pembelian Blouse Striped oleh Eva '),
-(206, 3, 106, '2023-11-15', 'Pembelian Jeans Skinny oleh Sophia'),
-(207, 4, 107, '2023-11-16', 'Pembelian Skirt A-line oleh Olivia'),
-(208, 5, 108, '2023-11-17', 'Pembelian T-shirt V-neck oleh Emma '),
-(209, 6, 109, '2023-11-18', 'Pembelian Cardigan Knit oleh Isabella');
+INSERT INTO `users` (`id_pengguna`, `nama_pengguna`, `no_telp`, `alamat`, `role`, `username`, `password`) VALUES
+(1, 'Alice', '081234567893', 'Jl. CAntik No. 1', 'admin', 'admin', '123456'),
+(2, 'Eva', '081234567894', 'Jl. Pahlawan No. 2', 'user', 'user1', '1234'),
+(3, 'Sophia', '081234567895', 'Semarang', 'user', 'sophia', 'shopi1'),
+(4, 'Olivia', '081234567896', 'Jl. Wanita No. 4', 'user', 'olivia', '1234'),
+(5, 'Emma', '081234567897', 'Jl. Wanita No. 5', 'user', 'ema', '1234'),
+(6, 'Isabella', '081234567898', 'Jl. Wanita No. 6', 'user', 'isabel', '1234');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `barang`
+-- Indexes for table `kategori`
 --
-ALTER TABLE `barang`
+ALTER TABLE `kategori`
+  ADD PRIMARY KEY (`id_kategori`);
+
+--
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_barang`),
-  ADD KEY `fk_id_supplier` (`id_supplier`);
+  ADD KEY `id_kategori` (`id_kategori`);
 
 --
--- Indexes for table `pembayaran`
+-- Indexes for table `users`
 --
-ALTER TABLE `pembayaran`
-  ADD PRIMARY KEY (`id_pembayaran`),
-  ADD KEY `id_transaksi` (`id_transaksi`);
-
---
--- Indexes for table `pembeli`
---
-ALTER TABLE `pembeli`
-  ADD PRIMARY KEY (`id_pembeli`);
-
---
--- Indexes for table `supplier`
---
-ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id_supplier`);
-
---
--- Indexes for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_pembeli` (`id_pembeli`),
-  ADD KEY `fk_id_transaksi` (`id_barang`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_pengguna`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `pembayaran`
+-- AUTO_INCREMENT for table `kategori`
 --
-ALTER TABLE `pembayaran`
-  MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
+ALTER TABLE `kategori`
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `supplier`
+-- AUTO_INCREMENT for table `produk`
 --
-ALTER TABLE `supplier`
-  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `produk`
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `barang`
+-- Constraints for table `produk`
 --
-ALTER TABLE `barang`
-  ADD CONSTRAINT `fk_id_supplier` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id_supplier`);
-
---
--- Constraints for table `pembayaran`
---
-ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `id_transaksi` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`);
-
---
--- Constraints for table `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD CONSTRAINT `fk_id_transaksi` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
-  ADD CONSTRAINT `id_barang` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`),
-  ADD CONSTRAINT `id_pembeli` FOREIGN KEY (`id_pembeli`) REFERENCES `pembeli` (`id_pembeli`);
+ALTER TABLE `produk`
+  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id_kategori`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -63,23 +63,15 @@
                 Testimonial
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact Us</a>
-            </li>
           </ul>
           <div class="user_option">
-            <a href="">
+            <a href="login.php">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
                 Login
               </span>
             </a>
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
+            
               </button>
             </form>
           </div>
@@ -108,7 +100,7 @@
               <div class="client_info">
                 <div class="client_name">
                   <h5>
-                    Morijorch
+                    Sophia
                   </h5>
                   <h6>
                     Default model text
@@ -117,8 +109,8 @@
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
               </div>
               <p>
-                editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
-              </p>
+              "Absolutely stunning collection of women's apparel! The attention to detail in design and quality is simply remarkable. Each piece embodies elegance and sophistication, catering to diverse styles and preferences. The craftsmanship speaks volumes, ensuring both style and comfort for every occasion. A definite must-have for fashion enthusiasts seeking exquisite and trendy wardrobe staples!"
+</p>
             </div>
           </div>
           <div class="carousel-item">
@@ -126,7 +118,7 @@
               <div class="client_info">
                 <div class="client_name">
                   <h5>
-                    Rochak
+                    Angel
                   </h5>
                   <h6>
                     Default model text
@@ -135,8 +127,7 @@
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
               </div>
               <p>
-                Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
-              </p>
+              "This line of women's clothing is a true epitome of chic and grace. The fusion of modern trends with timeless elegance is beautifully captured in every garment. The fabric's luxurious feel coupled with the impeccable fit reflects a commitment to both style and functionality. A definite game-changer in the world of fashion!"              </p>
             </div>
           </div>
           <div class="carousel-item">
@@ -144,7 +135,7 @@
               <div class="client_info">
                 <div class="client_name">
                   <h5>
-                    Brad Johns
+                    Eva
                   </h5>
                   <h6>
                     Default model text
@@ -153,8 +144,7 @@
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
               </div>
               <p>
-                Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy, editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Variouseditors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various
-              </p>
+              "The women's attire offered here is a sheer delight for fashion aficionados! From the vibrant color palettes to the impeccable tailoring, each piece exudes sophistication and panache. The versatility of the collection effortlessly transitions from casual chic to refined elegance, making it an absolute wardrobe essential for the contemporary woman."              </p>
             </div>
           </div>
         </div>

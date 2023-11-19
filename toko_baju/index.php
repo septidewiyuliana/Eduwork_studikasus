@@ -71,9 +71,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                 Testimonial
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact Us</a>
-            </li>
+            
           </ul>
           <div class="user_option">
             <a href="login.php">
@@ -82,14 +80,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                 Login
               </span>
             </a>
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
+            
           </div>
         </div>
       </nav>
@@ -120,7 +111,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                   </div>
                   <div class="col-md-5 ">
                     <div class="img-box">
-                      <img src="image/10.png" alt="" />
+                      <img src="images/10.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -145,7 +136,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                   </div>
                   <div class="col-md-5 ">
                     <div class="img-box">
-                      <img src="image/14.png" alt="" />
+                      <img src="images/14.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -170,7 +161,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                   </div>
                   <div class="col-md-5 ">
                     <div class="img-box">
-                      <img src="image/1.png" alt="" />
+                      <img src="images/1.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -205,21 +196,31 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
           Latest Products
         </h2>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="detail/cami_dress.php" class="btn-overlay" >lihat detail produk</a>
+      
+        <div class="row">
+        <?php
+include("connection.php");
+$query = mysqli_query($conn, "SELECT * FROM produk");
+
+?>
+        <?php
+        // Loop through the products and generate HTML dynamically
+        while ($row = mysqli_fetch_assoc($query)) {
+        ?>
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+              <a href="detail/cami_dress.php" class="btn-overlay">lihat detail produk</a>
               <div class="img-box">
-                <img src="image/2.png" alt="">
+                <img src="images/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama_produk']; ?>">
               </div>
               <div class="detail-box">
                 <h6>
-                  Ruffle Cami Dress
+                  <?php echo $row['nama_produk']; ?>
                 </h6>
                 <h6>
                   Price
                   <span>
-                    Rp.352000
+                    <?php echo 'Rp.' . $row['harga']; ?>
                   </span>
                 </h6>
               </div>
@@ -228,182 +229,11 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                   New
                 </span>
               </div>
-            </a>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay" >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/9.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Voluminous sheer sleeves dress
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp499000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/13.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Blouse Stripped
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 125000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/15.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  V line
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp.99000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/7.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                 Bear Dress & Mock Neck Top Set
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp.459000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/16.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Vintage High Waist Pleated Skirt
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp.99000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/18.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                 Floral Pinky  Dress
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp.599000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="image/17.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Lantern Sleeve Cardigan Knitted
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp.129000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
+        <?php
+        }
+        ?>   
           </div>
         </div>
       </div>
@@ -425,7 +255,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
         <div class="row">
           <div class="col-lg-6">
             <div class="img-box">
-              <img src="image/4.png" alt="">
+              <img src="images/4.png" alt="">
             </div>
           </div>
           <div class="col-lg-6">
@@ -437,15 +267,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                 </h2>
               </div>
               <p>
-                Qui ex dolore at repellat, quia neque doloribus omnis adipisci, ipsum eos odio fugit ut eveniet blanditiis praesentium totam non nostrum dignissimos nihil eius facere et eaque. Qui, animi obcaecati.
-              </p>
-              <div class="btn-box">
-                <a href="#" class="btn1">
-                  Buy Now
-                </a>
-                <a href="#" class="btn2">
-                  See More
-                </a>
+              Welcome to the ultimate destination to meet all your fashion needs. Here, we present an enchanting collection of women's clothing from leading designers in the industry. From trendy casual styles to elegant attire for special occasions, we have everything you're looking for.              </p>
               </div>
             </div>
           </div>
@@ -750,51 +572,6 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
   <!-- end gift section -->
 
 
-  <!-- contact section -->
-
-  <section class="contact_section ">
-    <div class="container px-0">
-      <div class="heading_container ">
-        <h2 class="">
-          Contact Us
-        </h2>
-      </div>
-    </div>
-    <div class="container container-bg">
-      <div class="row">
-        <div class="col-lg-7 col-md-6 px-0">
-          <div class="map_container">
-            <div class="map-responsive">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-5 px-0">
-          <form action="#">
-            <div>
-              <input type="text" placeholder="Name" />
-            </div>
-            <div>
-              <input type="email" placeholder="Email" />
-            </div>
-            <div>
-              <input type="text" placeholder="Phone" />
-            </div>
-            <div>
-              <input type="text" class="message-box" placeholder="Message" />
-            </div>
-            <div class="d-flex ">
-              <button>
-                SEND
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end contact section -->
 
   <!-- client section -->
   <section class="client_section layout_padding">
@@ -905,8 +682,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
               ABOUT US
             </h6>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
-            </p>
+            Explore our latest collection designed to showcase the current trends in the world of fashion. Each clothing item is crafted with attention to detail, using the finest quality materials to ensure both style and comfort. We offer a wide variety of choices suitable for various occasions and your unique style preferences.            </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="info_form ">
@@ -926,8 +702,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
               NEED HELP
             </h6>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet, consectetur adipiscing elit, sed doLorem ipsum dolor sit amet,
-            </p>
+We're excited to assist you in finding the perfect fashion choices to suit your desires. Our customer service team is ready to help with any inquiries or suggestions you might need.            </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <h6>

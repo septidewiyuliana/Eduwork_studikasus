@@ -1,3 +1,21 @@
+<?php
+include("connection.php");
+
+// Inisialisasi variabel pencarian
+$searchKeyword = "";
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $searchKeyword = $_GET['search'];
+    $query = "SELECT * FROM produk WHERE nama_produk LIKE '%$searchKeyword%'";
+    $result = mysqli_query($conn, $query);
+} else {
+  $query = "SELECT * FROM produk" ;
+    $result = mysqli_query($conn, $query);
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +32,7 @@
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
   <title>
-    Beauty  Wear
+    Beauty Wear
   </title>
 
   <!-- slider stylesheet -->
@@ -63,25 +81,14 @@
                 Testimonial
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact Us</a>
-            </li>
           </ul>
           <div class="user_option">
-            <a href="">
+          <a href="login.php">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
                 Login
               </span>
             </a>
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
-            <form class="form-inline ">
-              <button class="btn nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
           </div>
         </div>
       </nav>
@@ -90,420 +97,65 @@
 
   </div>
   <!-- end hero area -->
-<!-- shop section -->
+  <!-- shop section -->
 
-<section class="shop_section layout_padding">
-  <div class="container">
-    <div class="heading_container heading_center">
-      <h2>
-        Latest Products
-      </h2>
+  <section class="shop_section layout_padding">
+    <div class="container">
+      
+        
+    <h2 class="text-center fw-bold">
+    Latest Products
+</h2>
+
+        <form method="GET" action="">
+        <div class="input-group mb-3">
+  <input type="text" class="form-control form-control-lg" placeholder="Search Product" aria-label="Recipient's username" aria-describedby="button-addon2" name="search">
+  <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+</div>
+                   
+                </form>
+
+      
+
+      <div class="row">
+                <?php
+                // Menampilkan hasil pencarian jika ada
+                if ($result && mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="box">
+              <a href="detail/cami_dress.php" class="btn-overlay">lihat detail produk</a>
+              <div class="img-box">
+                <img src="images/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama_produk']; ?>">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  <?php echo $row['nama_produk']; ?>
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    <?php echo 'Rp.' . $row['harga']; ?>
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<p>No products found.</p>";
+                }
+                ?>
+            </div>
+
     </div>
-    <div class="row">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-          <a href="detail/cami_dress.php" class="btn-overlay" >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Ruffle Cami Dress
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp.352000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay" >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/9.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Voluminous sheer sleeves dress
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp499000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/13.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Blouse Stripped
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp. 125000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/15.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                V line
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp.99000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/7.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-               Bear Dress & Mock Neck Top Set
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp.459000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/16.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Vintage High Waist Pleated Skirt
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp.99000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/18.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-               Floral Pinky  Dress
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp.599000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="box">
-        <a href="detail/cami_dress.php" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-              <img src="image/17.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6>
-                Lantern Sleeve Cardigan Knitted
-              </h6>
-              <h6>
-                Price
-                <span>
-                  Rp.129000
-                </span>
-              </h6>
-            </div>
-            <div class="new">
-              <span>
-                New
-              </span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-        <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-            <div class="img-box">
-                <img src="images/p1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $200
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p5.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $95
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p6.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $70
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p7.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $400
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="#" class="btn-overlay"  >lihat detail produk</a>
-              <div class="img-box">
-                <img src="images/p8.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $450
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      </div>
   </section>
 
   <!-- end shop section -->
