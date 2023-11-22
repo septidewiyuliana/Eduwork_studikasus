@@ -35,9 +35,9 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
 </head>
 
 <body>
-    <!-- Menampilkan data dalam katalog -->
-  
-</div>
+  <!-- Menampilkan data dalam katalog -->
+
+  </div>
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -71,17 +71,29 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                 Testimonial
               </a>
             </li>
-            
+
           </ul>
           <div class="user_option">
-            <a href="login.php">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span>
-                Login
-              </span>
-            </a>
-            
+            <?php
+            // Start the session
+            session_start();
+
+            // Check if the username is set in the session
+            if (isset($_SESSION['username'])) {
+              echo '<i class="fa fa-user" aria-hidden="true"></i>';
+              echo '<span>' . $_SESSION['username'] . '</span>';
+              echo '<a href="logout.php">Logout</a>';
+            } else {
+              // If not logged in, display the login link
+              echo '<a href="login.php">';
+              echo '<i class="fa fa-user" aria-hidden="true"></i>';
+              echo '<span>Login</span>';
+              echo '</a>';
+            }
+            ?>
           </div>
+
+
         </div>
       </nav>
     </header>
@@ -102,7 +114,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                         Beauty Wear
                       </h1>
                       <p>
-                      If you want to put together a casual look that expresses your urban fashion style without limiting you, you can start by simplifying and wearing the basics.
+                        If you want to put together a casual look that expresses your urban fashion style without limiting you, you can start by simplifying and wearing the basics.
                       </p>
                       <a href="">
                         Contact Us
@@ -127,7 +139,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                         Beauty Wear
                       </h1>
                       <p>
-                      If you want to put together a casual look that expresses your urban fashion style without limiting you, you can start by simplifying and wearing the basics.
+                        If you want to put together a casual look that expresses your urban fashion style without limiting you, you can start by simplifying and wearing the basics.
                       </p>
                       <a href="">
                         Contact Us
@@ -153,7 +165,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                       </h1>
                       <p>
                         If you want to put together a casual look that expresses your urban fashion style without limiting you, you can start by simplifying and wearing the basics.
-                       </p>
+                      </p>
                       <a href="">
                         Contact Us
                       </a>
@@ -196,20 +208,20 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
           Latest Products
         </h2>
       </div>
-      
-        <div class="row">
-        <?php
-include("connection.php");
-$query = mysqli_query($conn, "SELECT * FROM produk");
 
-?>
+      <div class="row">
+        <?php
+        include("connection.php");
+        $query = mysqli_query($conn, "SELECT * FROM produk");
+
+        ?>
         <?php
         // Loop through the products and generate HTML dynamically
         while ($row = mysqli_fetch_assoc($query)) {
         ?>
           <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="box">
-              <a href="detail/cami_dress.php" class="btn-overlay">lihat detail produk</a>
+              <a href="detail_produk.php?id_barang=<?php echo $row['id_barang']; ?>" class="btn-overlay">lihat detail produk</a>
               <div class="img-box">
                 <img src="images/<?php echo $row['gambar']; ?>" alt="<?php echo $row['nama_produk']; ?>">
               </div>
@@ -233,15 +245,15 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
           </div>
         <?php
         }
-        ?>   
-          </div>
-        </div>
+        ?>
       </div>
-      <div class="btn-box">
-        <a href="shop.php">
-          View All Products
-        </a>
-      </div>
+    </div>
+    </div>
+    <div class="btn-box">
+      <a href="shop.php">
+        View All Products
+      </a>
+    </div>
     </div>
   </section>
 
@@ -267,12 +279,12 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                 </h2>
               </div>
               <p>
-              Welcome to the ultimate destination to meet all your fashion needs. Here, we present an enchanting collection of women's clothing from leading designers in the industry. From trendy casual styles to elegant attire for special occasions, we have everything you're looking for.              </p>
-              </div>
+                Welcome to the ultimate destination to meet all your fashion needs. Here, we present an enchanting collection of women's clothing from leading designers in the industry. From trendy casual styles to elegant attire for special occasions, we have everything you're looking for. </p>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -532,7 +544,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
 
   <!-- gift section -->
 
- <!--<section class="gift_section layout_padding-bottom">
+  <!--<section class="gift_section layout_padding-bottom">
     <div class="box ">
       <div class="container-fluid">
         <div class="row">
@@ -682,7 +694,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
               ABOUT US
             </h6>
             <p>
-            Explore our latest collection designed to showcase the current trends in the world of fashion. Each clothing item is crafted with attention to detail, using the finest quality materials to ensure both style and comfort. We offer a wide variety of choices suitable for various occasions and your unique style preferences.            </p>
+              Explore our latest collection designed to showcase the current trends in the world of fashion. Each clothing item is crafted with attention to detail, using the finest quality materials to ensure both style and comfort. We offer a wide variety of choices suitable for various occasions and your unique style preferences. </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="info_form ">
@@ -702,7 +714,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
               NEED HELP
             </h6>
             <p>
-We're excited to assist you in finding the perfect fashion choices to suit your desires. Our customer service team is ready to help with any inquiries or suggestions you might need.            </p>
+              We're excited to assist you in finding the perfect fashion choices to suit your desires. Our customer service team is ready to help with any inquiries or suggestions you might need. </p>
           </div>
           <div class="col-md-6 col-lg-3">
             <h6>
@@ -730,7 +742,7 @@ We're excited to assist you in finding the perfect fashion choices to suit your 
     <footer class=" footer_section">
       <div class="container">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved       </p>
+          &copy; <span id="displayYear"></span> All Rights Reserved </p>
       </div>
     </footer>
     <!-- footer section -->

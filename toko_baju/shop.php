@@ -75,8 +75,6 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
               <a class="nav-link" href="why.php">
                 Why Us
               </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="testimonial.php">
                 Testimonial
               </a>
